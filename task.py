@@ -185,4 +185,7 @@ def pause(secs):
 
 
 if __name__ == "__main__":
-    main()
+    userfile = open('input/user.txt')
+    username = userfile.readline()
+    pw = userfile.readline()
+    main(username, pw)
