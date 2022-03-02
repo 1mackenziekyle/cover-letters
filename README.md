@@ -1,13 +1,10 @@
-# Template: Basic Python only robot
+# Project Outline
 
-Get started with just Python.
+This project
 
-This template robot:
+- Uses Python and Robot Framework for navigating through login screens and authentication.
+- Uses BeautifulSoup and Pandas for fetching and storing data
+- Runs a Node.js server that calls the Python script and handles data in JSON from the script
+- Uses docxtemplater to generate the .docx files
 
-- Uses only Python.
-- Provides a simple template to start from (`task.py`).
-
-## Learning materials
-
-- [Python basics](https://robocorp.com/docs/languages-and-frameworks/python)
-- [Best practices in creating Python robots](https://robocorp.com/docs/development-guide/qa-and-best-practices/python-robots)
+##### Kyle Mackenzie 2022
