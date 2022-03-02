@@ -185,4 +185,4 @@ def pause(secs):
 
 
 if __name__ == "__main__":
-    main('kylem426', 'Kyle.Lowry7')
+    main()
