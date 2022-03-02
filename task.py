@@ -7,25 +7,6 @@ import docx
 
 lib = Selenium()
 
-frontend_words = [
-    'front',
-    'react',
-    'javascript',
-    'web',
-
-]
-
-backend_words = [
-    'back',
-    'pipeline',
-    'data',
-    'python',
-    'R'
-]
-
-ORGANIZATION = "org"
-LOCATION = "loc"
-DATE = "date"
 
 
 c_l_paragraphs = [
@@ -42,6 +23,9 @@ c_l_paragraphs = [
     "Kyle Mackenzie"
 ]
 
+
+
+# Main function
 def main(ubc_user, ubc_pw):
     try:
         # navigate
@@ -61,8 +45,6 @@ def main(ubc_user, ubc_pw):
         print(e)
     finally: 
         print("=========DONE MAIN METHOD===========")
-
-
 
 
 
@@ -97,93 +79,12 @@ def navigate_to_browser(ubc_user, ubc_pw):
     pause(1)
 
 
-
-
-
-
-# Function: Generate Cover Letters
-def generate_documents(table):
-    # doc = docx.Document("cover-letter-template.docx")
-    # para_count = 0
-    # for para in doc.paragraphs:
-    #     print("======paragraph #", para_count, "======")
-    #     print(para.text)
-    #     para_count += 1
-
-
-    print("TEST: Writing to doc.")
-    output_doc = docx.Document("input/header.docx")
-    for paragraph in c_l_paragraphs:
-        print("adding paragraph: ", paragraph, "\n")
-        add_para = output_doc.add_paragraph(paragraph)
-        print(add_para)
-
-
-
-
-
-
-
-
-
+# Function: Pause
 def pause(secs):
     time.sleep(secs)
     
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Main Method
 if __name__ == "__main__":
     userfile = open('input/user.txt')
     username = userfile.readline()
