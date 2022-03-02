@@ -17,3 +17,4 @@ temp/
 testrun/*
 .~lock*
 *.pkl
+input/*
