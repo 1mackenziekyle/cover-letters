@@ -13,14 +13,6 @@ This project
 - make a new folder called /input
 - add your cover letter template under /input folder and edit the variable 'templateName' in task.js (mine is cover-letter-template.docx)
 - in your template word doc, use the variables {JOB_TITLE}, {ORGANIZATION}, {LOCATION}. {DATE}.
-- add file: input/user.txt that includes your UBC CWL login in this format (I have removed this from .gitignore so that you can't see mine).
-
-####user.txt
-
-####/////////////////////
-
-####CWLusername
-
-####CWLpassword
+- add file: input/user.txt that includes your UBC CWL login, followed by your UBC password on the line below (no quotes, just what you would type in the box)
 
 ##### Kyle Mackenzie 2022
