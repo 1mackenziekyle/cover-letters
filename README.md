@@ -9,7 +9,7 @@ This project
 
 # How to use:
 
-Requires: Python, Node.js, Robocorp VS Code Extension
+Requires that you have Python, Node.js, Robocorp VS Code Extension, Bash installed.
 
 - Copy this repository
 - make a new folder called /input
