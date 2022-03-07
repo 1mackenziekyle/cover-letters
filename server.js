@@ -27,26 +27,20 @@ app.get("/", (req, res) => {
   var pythonData;
 
   // run python script
-  const python = spawn(
-    " cd c:\\Users\\1mack\\projects\\python\\job_app_tool_rf ; /usr/bin/env C:\\Users\\1mack\\AppData\\Local\\robocorp\\temp\\4d65822107fca24e\\rf-ls-run\\run_env_00_ubuzg1db.bat c:\\Users\\1mack\\.vscode\\extensions\\robocorp.robocorp-code-0.27.1\\bin\\rcc.exe task run --robot c:\\Users\\1mack\\projects\\python\\job_app_tool_rf\\robot.yaml",
-    [
-      "--space",
-      "vscode-05",
-      "--task",
-      '"Run Python"',
-      "--controller",
-      "RobocorpCode",
-    ]
+  exec(
+    'cd c:\\Users\\1mack\\projects\\python\\job_app_tool_rf ; /usr/bin/env C:\\Users\\1mack\\AppData\\Local\\robocorp\\temp\\4d65822107fca24e\\rf-ls-run\\run_env_00_3e\\extensions\\robocorp.robocorp-code-0.27.1\\bin\\rcc.exe task run --robot c:\\Users\\1mack\\projects\\python\\job_app_tool_rf\\robot.yaml --space vscode-05 --taskode n Python" --controller RobocorpCo',
+    (error, stdout, stderr) => {
+      if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+      }
+      console.log(`stdout: ${stdout}`);
+    }
   );
-  python.stdout.on("data", (data) => {
-    console.log("Data from python script: ");
-    const jsonData = JSON.parse(data.toString());
-    console.log("jsondata", jsonData);
-  });
-
-  python.on("close", (code) => {
-    console.log("Child process close all stdio with code", code);
-  });
 });
 
 // Send data to server

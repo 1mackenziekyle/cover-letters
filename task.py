@@ -38,12 +38,9 @@ def main(ubc_user, ubc_pw):
         table.insert(1, "Job Type", "")
         # print to excel
         table.to_excel(excel_writer="table.xlsx", sheet_name="Jobs")
-        result = table.to_json
         
     except Exception as e:
-        result = e
-    finally: 
-        print(result)
+        print(e)
 
 
 # Function: Open and navigate to SCOPE
