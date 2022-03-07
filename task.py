@@ -4,6 +4,7 @@ from numpy import dtype
 import pandas as pd
 from bs4 import BeautifulSoup
 import docx
+import json
 
 lib = Selenium()
 
@@ -27,6 +28,7 @@ c_l_paragraphs = [
 
 # Main function
 def main(ubc_user, ubc_pw):
+    print("===========STARTING TASK.PY===========")
     try:
         # navigate
         navigate_to_browser(ubc_user=ubc_user, ubc_pw=ubc_pw)
@@ -39,6 +41,26 @@ def main(ubc_user, ubc_pw):
         # print to excel
         table.to_excel(excel_writer="table.xlsx", sheet_name="Jobs")
         
+        print("Writing JSON...")
+        # Write JSON to array
+        jsonParentObject = {}
+        print('size:', len(table))
+        for i in range(len(table)):
+            print('index', i)
+            # write json object
+            job_data = {
+                'job_title': table['Job Title'].iloc[i],
+                'organization' : table['Organization'].iloc[i],
+                'location': table['Location'].iloc[i],
+                'app_deadline': table['App Deadline'].iloc[i]
+            }
+            jsonParentObject[job_data['job_title'] + '-' + job_data['organization']] = job_data
+
+        # Write to JSON file
+        fileOutputData = json.dumps(jsonParentObject, indent=4)
+        with open('json_data.json', 'w') as outfile: 
+            outfile.write(fileOutputData)
+
     except Exception as e:
         print(e)
 
