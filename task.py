@@ -37,15 +37,13 @@ def main(ubc_user, ubc_pw):
         lib.close_all_browsers()
         table.insert(1, "Job Type", "")
         # print to excel
-        print(table.to_excel(excel_writer="output/table.xlsx", sheet_name="Jobs"))
-
-        # generate documents
-        generate_documents(table) 
+        table.to_excel(excel_writer="table.xlsx", sheet_name="Jobs")
+        result = table.to_json
+        
     except Exception as e:
-        print(e)
+        result = e
     finally: 
-        print("=========DONE MAIN METHOD===========")
-
+        print(result)
 
 
 # Function: Open and navigate to SCOPE

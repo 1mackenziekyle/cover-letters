@@ -7,7 +7,7 @@ const Docxtemplater = require("docxtemplater");
 const fs = require("fs");
 const path = require("path");
 const { json } = require("body-parser");
-const { spawn } = require("child_process");
+const { exec } = require("child_process");
 
 // Constants
 const PORT = 3000;
@@ -21,42 +21,48 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-var server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-type": "text/plain" });
-  res.end("Hello world\n");
-});
-
 // Get data from server
 app.get("/", (req, res) => {
-  res.status(200).send("Hello world.\n");
+  console.log("GET Method");
+  var pythonData;
 
   // run python script
   const python = spawn(
-    'cd c:\\Users\\1mack\\projects\\python\\job_app_tool_rf ; /usr/bin/env C:\\Users\\1mack\\AppData\\Local\\robocorp\\temp\\4d65822107fca24e\\rf-ls-run\\run_env_00_gvfdxkn0.bat c:\\Users\\1mack\\.vscode\\extensions\\robocorp.robocorp-code-0.27.1\\bin\\rcc.exe task run --robot c:\\Users\\1mack\\projects\\python\\job_app_tool_rf\\robot.yaml --space vscode-05 --task "Run Python" --controller RobocorpCode',
-    ["task.py"]
+    " cd c:\\Users\\1mack\\projects\\python\\job_app_tool_rf ; /usr/bin/env C:\\Users\\1mack\\AppData\\Local\\robocorp\\temp\\4d65822107fca24e\\rf-ls-run\\run_env_00_ubuzg1db.bat c:\\Users\\1mack\\.vscode\\extensions\\robocorp.robocorp-code-0.27.1\\bin\\rcc.exe task run --robot c:\\Users\\1mack\\projects\\python\\job_app_tool_rf\\robot.yaml",
+    [
+      "--space",
+      "vscode-05",
+      "--task",
+      '"Run Python"',
+      "--controller",
+      "RobocorpCode",
+    ]
   );
   python.stdout.on("data", (data) => {
     console.log("Data from python script: ");
-    const jsonData = JSON.parse(data);
-    console.log(jsonData);
-    python.on("close", (code) => {
-      console.log("script closed all stdio with ", code);
-    });
+    const jsonData = JSON.parse(data.toString());
+    console.log("jsondata", jsonData);
   });
 
-  // Send data to server
-  app.post("/postdata", (req, res) => {
-    const jsonData = req.body;
-    for (const [key, value] of Object.entries(jsonData)) {
-      console.log(key, value);
-      generate_doc(value);
-    }
+  python.on("close", (code) => {
+    console.log("Child process close all stdio with code", code);
   });
+});
 
-  // on startup
-  server.listen(PORT, () => {
-    console.log("Server is running on", PORT, "\n");
-  });
+// Send data to server
+app.post("/", (req, res) => {
+  console.log("POST Method");
+  const jsonData = req.body.toString();
+  for (const [key, value] of Object.entries(jsonData)) {
+    console.log(key, value);
+    generate_doc(value);
+  }
+});
+
+// on startup
+app.listen(PORT, () => {
+  console.log("LISTEN method");
+  console.log("Server is running on", PORT, "\n");
 });
 
 //////////////////////////
