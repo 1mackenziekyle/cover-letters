@@ -14,5 +14,6 @@ This project
 - add your cover letter template under /input folder and edit the variable 'templateName' in task.js (mine is cover-letter-template.docx)
 - in your template word doc, use the variables {JOB_TITLE}, {ORGANIZATION}, {LOCATION}. {DATE}.
 - add file: input/user.txt that includes your UBC CWL login, followed by the password on the line below (no quotes, just what you would type in the box)
+- run GenerateCoverLetters.sh from your file explorer
 
 ##### Kyle Mackenzie 2022
