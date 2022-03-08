@@ -8,9 +8,7 @@ const fs = require("fs");
 const path = require("path");
 const { json } = require("body-parser");
 const { exec } = require("child_process");
-const fileData = require("./json_data.json");
-
-const zip = new PizZip(content);
+const web_json_data = require("./generated_data.json");
 const monthNames = [
   "January",
   "February",
@@ -31,15 +29,19 @@ const templateName = "cover-letter-template"; // ENTER YOUR COVER LETTER TEMPLAT
 
 /////////////////////////////////////////////////////////////////////
 
-const content = fs.readFileSync(
-  path.resolve(__dirname, "input/cover-letter-template.docx")
-);
+// Setup doc
 
 /* Function
  * Generate Document based on JSON date
  *
  */
+
 function generate_doc(data) {
+  var template_doc_contents = fs.readFileSync(
+    path.resolve(__dirname, "input/" + templateName + ".docx")
+  );
+  var zip = new PizZip(template_doc_contents);
+
   // load input doc as binary
   const doc = new Docxtemplater(zip, {
     paragraphLoop: true,
@@ -67,7 +69,7 @@ function generate_doc(data) {
     path.resolve(
       __dirname,
       "output/cover-letters/cover-letter-" +
-        (data.organization + data.job_title + "version" + ".docx")
+        (data.organization + data.job_title + ".docx")
           .toString()
           .replace(/\//g, "-")
           .replace(/ /g, "_")
@@ -77,9 +79,7 @@ function generate_doc(data) {
 }
 
 /* ======== MAIN METHOD ======= */
-console.log("STARTING task.js");
-const jobs = Object.keys(fileData);
-for (const jobKey of jobs) {
-  console.log("\nCreating word doc: ", fileData[jobKey]);
-  generate_doc(fileData[jobKey]);
+for (const job of Object.keys(web_json_data)) {
+  console.log("\nCreating word doc: ", web_json_data[job]);
+  generate_doc(web_json_data[job]);
 }
