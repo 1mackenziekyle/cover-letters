@@ -31,7 +31,7 @@ def navigate_to_browser(ubc_user, ubc_pw):
     pause(1)
     lib.click_element_when_visible('xpath://*[@id="myAccountNav"]/nav/ul/li[2]/ul/li[2]/a')
     pause(3)
-    lib.click_element_when_visible('xpath://*[@id="quickSearchCountsContainer"]/table[1]/tbody/tr[2]/td[2]/a')
+    lib.click_element_when_visible('xpath://*[@id="quickSearchCountsContainer"]/table[2]/tbody/tr[1]/td[2]/a')
     pause(1)
 
 
@@ -57,7 +57,6 @@ def main(ubc_user, ubc_pw):
         # Write JSON to array
         jsonParentObject = {}
         for i in range(len(table)):
-            print('index', i)
             # write json object
             job_data = {
                 'job_title': table['Job Title'].iloc[i],
