@@ -123,3 +123,5 @@ for (const job of Object.keys(backendJson)) {
   generate_doc(backendJson[job], backend_template_name);
   count++;
 }
+
+console.log("\nDone writing ", count, " cover letters.");
