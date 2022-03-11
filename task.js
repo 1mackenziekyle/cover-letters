@@ -79,7 +79,14 @@ function generate_doc(data) {
 }
 
 /* ======== MAIN METHOD ======= */
+var count = 1;
 for (const job of Object.keys(web_json_data)) {
-  console.log("\nCreating word doc: ", web_json_data[job]);
+  console.log(
+    "\nGenerating cover letter #",
+    count,
+    " with data: ",
+    web_json_data[job]
+  );
   generate_doc(web_json_data[job]);
+  count++;
 }
