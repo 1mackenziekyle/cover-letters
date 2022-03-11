@@ -19,9 +19,9 @@ This tool will
 Requires that you have Python, Node.js, Robocorp VS Code Extension, Bash installed.
 
 - Copy this repository
-- enter your info into **input/userinfo.json**
-- add your cover letter templates for front-end, under /input folder and edit the template name variables at the top of **task.js** (mine is cover-letter-template.docx)
-- in your template word doc, use the variables:
+- copy from **input/template.json** and enter your info into a new file called **input/userinfo.json**
+- add your cover letter templates for front-end, back-end, and full-stack jobs under /input folder and edit the template name variables at the top of **task.js**
+- in your template word docs, use any or all of the variables:
 
   - {FULLNAME}
   - {PROGRAM}
@@ -32,7 +32,7 @@ Requires that you have Python, Node.js, Robocorp VS Code Extension, Bash install
   - {LOCATION}
   - {DATE}
 
-  to replace the information you would usually write in your cover letter.
+  to replace the information you would usually write in your cover letter. Of course, you can leave some blank for security reasons, and manually enter, but the bot will need your UBC credentials to run.
 
 - add file: input/user.txt that includes your UBC CWL login, followed by the password on the line below (no quotes, just what you would type in the box)
 - once you have Robocorp extension on VS Code, open this project and use 'Robocorp: Run Robot' command from VS Code's Command Palette (Ctrl+Shift+P)
