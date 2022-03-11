@@ -1,6 +1,6 @@
 # Get date and time
-date
-date +"%FORMAT"
+# date
+# date +"%FORMAT"
 currentdatetime=$(date)
 
 # Print message to terminal
