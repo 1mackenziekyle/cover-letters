@@ -11,6 +11,8 @@ const { exec } = require("child_process");
 const fullstackJson = require("./fullstack.json");
 const frontendJson = require("./frontend.json");
 const backendJson = require("./backend.json");
+const userinfoJson = require("./input/userinfo.json");
+
 const monthNames = [
   "January",
   "February",
@@ -53,6 +55,10 @@ function generate_doc(data, templateName) {
   const date = new Date();
   // Replace words in doccument
   doc.render({
+    FULLNAME: userinfoJson["fullname"],
+    PROGRAM: userinfoJson["program"],
+    EMAIL: userinfoJson["email"],
+    CELL_NUMBER: userinfoJson["cell_number"],
     ORGANIZATION: data.organization,
     JOB_TITLE: data.job_title,
     LOCATION: data.location,

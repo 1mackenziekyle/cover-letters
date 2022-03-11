@@ -12,6 +12,14 @@ frontendJson = {}
 backendJson = {}
 
 
+import json
+
+with open('input/userinfo.json', 'r') as f:
+  jdata = json.load(f)
+print('jdata')
+print(jdata)
+print(jdata['fullname'])
+
 
 # Function: Open and navigate to SCOPE
 def navigate_to_browser(ubc_user, ubc_pw) -> None:
@@ -113,6 +121,7 @@ def main(ubc_user, ubc_pw) -> None:
 # Main Method
 if __name__ == "__main__":
     userfile = open('input/user.txt')
-    username = userfile.readline()
+    username = jdata['ubc_username']
+    u = userfile.readline()
     pw = userfile.readline()
     main(username, pw)
