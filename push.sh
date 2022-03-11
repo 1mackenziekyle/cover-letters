@@ -4,7 +4,7 @@ date
 date +"%FORMAT"
 currentdatetime=$(date)
 currentdatetime=`date`
-echo "$currentdatetime"
+echo Lazy pushing at $currentdatetime
 
 # Git actions
 git add .
