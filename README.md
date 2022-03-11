@@ -58,6 +58,6 @@ This project:
 
 ## Important:
 
-If you are using this program, make sure you **_do not upload any of your UBC login information to GitHub_**. I have removed the /input folder containing my user login information using the .gitignore folder.
+If you are using this program, make sure you **_do not upload any of your UBC login information to GitHub_**. Pay close attention to the .gitignore files in the _input_ and _output/cover-letters/\*_ folders.
 
 ##### Kyle Mackenzie 2022
