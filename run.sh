@@ -7,4 +7,3 @@ sleep 1
 echo %%% RUNNING TASK.JS %%%
 node task.js
 echo %%% PROGRAM DONE. %%%
-sleep 1
