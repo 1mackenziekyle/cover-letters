@@ -42,10 +42,9 @@ Requires that you have Python, Node.js, Robocorp VS Code Extension, Bash install
 
   to replace the information you would usually write in your cover letter. Of course, you can leave some blank for security reasons, and manually enter, but the bot will need your UBC credentials to run.
 
-- add file: input/user.txt that includes your UBC CWL login, followed by the password on the line below (no quotes, just what you would type in the box)
-- once you have Robocorp extension on VS Code, open this project and use 'Robocorp: Run Robot' command from VS Code's Command Palette (Ctrl+Shift+P)
-- once you run it, copy the initial command and replace the first command under 'Run python' on GenerateCoverLetters.sh, which can be done easily through VS Code. It should look similar.
-- Run the run.sh file from your file explorer or use command "./run.sh" or "Bash run.sh" in your Bash terminal.
+- once you have Robocorp extension on VS Code, open this project, open the Command Palette (Ctrl+Shift+P) and execute the 'Robocorp: Run Robot' command 
+- once you run it, copy the initial command and replace the first command under 'Run python' on GenerateCoverLetters.sh. It should look similar.
+- Run the run.sh file from your file explorer or use command "./run.sh" or "Bash run.sh" in your Bash terminal or VS Code integrated terminal.
 
 ## How it Works:
 
