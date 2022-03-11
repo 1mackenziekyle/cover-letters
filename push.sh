@@ -4,9 +4,9 @@ date
 date +"%FORMAT"
 currentdatetime=$(date)
 currentdatetime=`date`
-echo "################################"
+echo "##########################################"
 echo Lazy pushing at $currentdatetime
-echo "################################"
+echo "############################################"
 
 # Git actions
 git add .
