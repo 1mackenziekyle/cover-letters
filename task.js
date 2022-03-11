@@ -77,9 +77,7 @@ function generate_doc(data, templateName) {
   fs.writeFileSync(
     path.resolve(
       __dirname,
-      "output/cover-letters/" +
-        data.type +
-        "/cover-letter-" +
+      "output/cover-letters/cover-letter-" +
         (data.organization + "--" + data.job_title + ".docx")
           .toString()
           .replace(/\//g, "-")
