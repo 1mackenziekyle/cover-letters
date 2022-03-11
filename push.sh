@@ -1,9 +1,9 @@
 # Get date and time
-
 date
 date +"%FORMAT"
 currentdatetime=$(date)
-# currentdatetime=`date`
+
+# Print message to terminal
 echo "############################################"
 echo Lazy pushing at $currentdatetime
 echo "############################################"
