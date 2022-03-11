@@ -3,7 +3,7 @@ currentdatetime=$(date)
 
 # Print message to terminal
 echo "##########################################################"
-echo Lazy pushing using push.sh at $date
+echo Lazy pushing using push.sh at $(date)
 echo "##########################################################"
 
 
