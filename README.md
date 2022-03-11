@@ -6,13 +6,21 @@
 
 ###### [Demo Video](youtu.be/ru7st3sewzm)
 
+###### [Contact Me](https://1mackenziekyle.github.io/personal-website/#/contact)
+
 ## Project Outline
 
 Ever feel like a robot applying to dozens of software jobs using the same templates and changing the company name, job title, etc.?
 
-Ever wish you could get someone else to do it?
+Ever wish you could get someone else to do it? Look no further.
 
-This tool will
+This tool will take cover letter templates made by you, get all the job board data inside of your shortlist, and generate cover letters for each and every one of them. The program is calibrated to produce cover letters of 3 types:
+
+- Full-stack software jobs
+- Front-end software jobs
+- Back-end software jobs
+
+This project is made to customize, so I have made the parameters clear in the code for you to fiddle around with. Please feel free to give me any sort of feedback under my [Contact Form](https://1mackenziekyle.github.io/personal-website/#/contact)
 
 ## How to use:
 

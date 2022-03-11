@@ -15,10 +15,8 @@ backendJson = {}
 import json
 
 with open('input/userinfo.json', 'r') as f:
-  jdata = json.load(f)
-print('jdata')
-print(jdata)
-print(jdata['fullname'])
+  userJsonInfo = json.load(f)
+
 
 
 # Function: Open and navigate to SCOPE
@@ -65,7 +63,6 @@ def writeDataToDict(index) -> None:
     # Frontend?
     for word in ['web', 'front', 'app', 'ui', 'ux']:
         if word in job_data['job_title'].lower():
-            print("FRONTEND" , job_data['job_title'])
             job_data['type'] = 'front-end'
             frontendJson[job_data['job_title'] + '-' + job_data['organization']] = job_data
             return
@@ -73,13 +70,11 @@ def writeDataToDict(index) -> None:
     # Backend?
     for word in ['data', 'science', 'back', 'machine', 'ops', 'firmware', 'embedded', 'systems']:
         if word in job_data['job_title'].lower():
-            print("BACKEND: ", job_data['job_title'])
             job_data['type'] = 'back-end'
             backendJson[job_data['job_title'] + '-' + job_data['organization']] = job_data
             return
     
     # Fullstack?
-    print("FULLSTACK", job_data['job_title'])
     job_data['type'] = 'full-stack'
     fullStackJson[job_data['job_title'] + '-' + job_data['organization']] = job_data
     return
@@ -120,6 +115,6 @@ def main(ubc_user, ubc_pw) -> None:
 
 # Main Method
 if __name__ == "__main__":
-    username = jdata['ubc_username']
-    pw = jdata['ubc_password']
+    username = userJsonInfo['ubc_username']
+    pw = userJsonInfo['ubc_password']
     main(username, pw)
