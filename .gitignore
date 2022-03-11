@@ -18,8 +18,4 @@ testrun/*
 *.pkl
 
 # Custom git ignores:
-input/* 
-output/cover-letters/*
 *.json
-*.docx
-*.txt
