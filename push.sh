@@ -2,9 +2,11 @@
 currentdatetime=$(date)
 
 # Print message to terminal
-echo "############################################"
-echo Lazy pushing at $currentdatetime
-echo "############################################"
+echo "##########################################################"
+echo Lazy pushing using push.sh at $currentdatetime
+echo "##########################################################"
+
+
 
 # Git actions
 git add .
