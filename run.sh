@@ -6,4 +6,4 @@ sleep 1
 # Run Node Server
 echo %%% RUNNING TASK.JS %%%
 node task.js
-echo %%% PROGRAM DONE. %%%
+echo %%% PROGRAM DONE. GO APPLY TO JOBS! %%%
