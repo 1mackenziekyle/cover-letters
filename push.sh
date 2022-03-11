@@ -1,16 +1,12 @@
 # Get date and time
+
 date
 date +"%FORMAT"
-var=$(date)
-var=`date`
-
-time
-time +"%FORMAT"
-var=$(time)
-var=`time`
-
+currentdatetime=$(date)
+currentdatetime=`date`
+echo "$currentdatetime"
 
 # Git actions
 git add .
-git commit -m "Lazy push at $date $time"
+git commit -m "Lazy push at $currentdatetime"
 git push origin master
