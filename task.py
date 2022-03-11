@@ -6,9 +6,15 @@ import json
 
 lib = Selenium()
 
+# Global vars
+fullStackJson = {}
+frontendJson = {}
+backendJson = {}
+
+
 
 # Function: Open and navigate to SCOPE
-def navigate_to_browser(ubc_user, ubc_pw):
+def navigate_to_browser(ubc_user, ubc_pw) -> None:
     # OPEN BROWSER
     lib.open_available_browser("https://scope.sciencecoop.ubc.ca/students/cwl-current-student-login.htm")
     lib.set_browser_implicit_wait(10)
@@ -36,17 +42,50 @@ def navigate_to_browser(ubc_user, ubc_pw):
 
 
 # Function: Pause
-def pause(secs):
+def pause(secs) -> None:
     time.sleep(secs)
+
+def writeDataToDict(index) -> None:
+    # write json object
+    job_data = {
+        'job_title': table['Job Title'].iloc[index],
+        'organization' : table['Organization'].iloc[index],
+        'location': table['Location'].iloc[index],
+        'app_deadline': table['App Deadline'].iloc[index]
+    }
+    
+    # Frontend?
+    for word in ['web', 'front', 'app', 'ui', 'ux']:
+        if word in job_data['job_title'].lower():
+            print("FRONTEND" , job_data['job_title'])
+            job_data['type'] = 'front-end'
+            frontendJson[job_data['job_title'] + '-' + job_data['organization']] = job_data
+            return
+    
+    # Backend?
+    for word in ['data', 'science', 'back', 'machine', 'ops', 'firmware', 'embedded', 'systems']:
+        if word in job_data['job_title'].lower():
+            print("BACKEND: ", job_data['job_title'])
+            job_data['type'] = 'back-end'
+            backendJson[job_data['job_title'] + '-' + job_data['organization']] = job_data
+            return
+    
+    # Fullstack?
+    print("FULLSTACK", job_data['job_title'])
+    job_data['type'] = 'full-stack'
+    fullStackJson[job_data['job_title'] + '-' + job_data['organization']] = job_data
+    return
+
     
 
 # Main function
-def main(ubc_user, ubc_pw):
+def main(ubc_user, ubc_pw) -> None:
     try:
         # navigate
         navigate_to_browser(ubc_user=ubc_user, ubc_pw=ubc_pw)
         # get data
         soup = BeautifulSoup(lib.driver.page_source, "html.parser")
+        global table
         table = pd.read_html(lib.driver.page_source)[0]
         # modify data
         lib.close_all_browsers()
@@ -55,21 +94,17 @@ def main(ubc_user, ubc_pw):
         
         print("Writing JSON...")
         # Write JSON to array
-        jsonParentObject = {}
-        for i in range(len(table)):
-            # write json object
-            job_data = {
-                'job_title': table['Job Title'].iloc[i],
-                'organization' : table['Organization'].iloc[i],
-                'location': table['Location'].iloc[i],
-                'app_deadline': table['App Deadline'].iloc[i]
-            }
-            jsonParentObject[job_data['job_title'] + '-' + job_data['organization']] = job_data
+        
+        for index in range(len(table)):
+            writeDataToDict(index)
 
-        # Write to JSON file
-        fileOutputData = json.dumps(jsonParentObject, indent=4)
-        with open('generated_data.json', 'w') as outfile: 
-            outfile.write(fileOutputData)
+        # Write to file
+        with open('fullstack.json', 'w') as outfile: 
+            outfile.write(json.dumps(fullStackJson, indent=4))
+        with open('frontend.json', 'w') as outfile: 
+            outfile.write(json.dumps(frontendJson, indent=4))
+        with open('backend.json', 'w') as outfile: 
+            outfile.write(json.dumps(backendJson, indent=4))
 
     except Exception as e:
         print(e)

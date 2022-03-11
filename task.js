@@ -8,7 +8,9 @@ const fs = require("fs");
 const path = require("path");
 const { json } = require("body-parser");
 const { exec } = require("child_process");
-const web_json_data = require("./generated_data.json");
+const fullstackJson = require("./fullstack.json");
+const frontendJson = require("./frontend.json");
+const backendJson = require("./backend.json");
 const monthNames = [
   "January",
   "February",
@@ -25,8 +27,9 @@ const monthNames = [
 ];
 
 ////////////////////////// USER INPUT ///////////////////////////////
-const templateName = "cover-letter-template"; // ENTER YOUR COVER LETTER TEMPLATE NAME AFTER ADDING UNDER /input
-
+const fullstack_template_name = "fullstack-template"; // ENTER YOUR COVER LETTER TEMPLATE NAME AFTER ADDING UNDER /input
+const frontend_template_name = "frontend-template";
+const backend_template_name = "backend-template";
 /////////////////////////////////////////////////////////////////////
 
 // Setup doc
@@ -36,7 +39,7 @@ const templateName = "cover-letter-template"; // ENTER YOUR COVER LETTER TEMPLAT
  *
  */
 
-function generate_doc(data) {
+function generate_doc(data, templateName) {
   var template_doc_contents = fs.readFileSync(
     path.resolve(__dirname, "input/" + templateName + ".docx")
   );
@@ -68,8 +71,10 @@ function generate_doc(data) {
   fs.writeFileSync(
     path.resolve(
       __dirname,
-      "output/cover-letters/cover-letter-" +
-        (data.organization + data.job_title + ".docx")
+      "output/cover-letters/" +
+        data.type +
+        "/cover-letter-" +
+        (data.organization + "--" + data.job_title + ".docx")
           .toString()
           .replace(/\//g, "-")
           .replace(/ /g, "_")
@@ -80,13 +85,35 @@ function generate_doc(data) {
 
 /* ======== MAIN METHOD ======= */
 var count = 1;
-for (const job of Object.keys(web_json_data)) {
+for (const job of Object.keys(fullstackJson)) {
   console.log(
     "\nGenerating cover letter #",
     count,
     " with data: ",
-    web_json_data[job]
+    fullstackJson[job]
   );
-  generate_doc(web_json_data[job]);
+  generate_doc(fullstackJson[job], fullstack_template_name);
+  count++;
+}
+
+for (const job of Object.keys(frontendJson)) {
+  console.log(
+    "\nGenerating cover letter #",
+    count,
+    " with data: ",
+    frontendJson[job]
+  );
+  generate_doc(frontendJson[job], frontend_template_name);
+  count++;
+}
+
+for (const job of Object.keys(backendJson)) {
+  console.log(
+    "\nGenerating cover letter #",
+    count,
+    " with data: ",
+    backendJson[job]
+  );
+  generate_doc(backendJson[job], backend_template_name);
   count++;
 }
