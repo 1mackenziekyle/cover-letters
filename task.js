@@ -8,9 +8,9 @@ const fs = require("fs");
 const path = require("path");
 const { json } = require("body-parser");
 const { exec } = require("child_process");
-const fullstackJson = require("./fullstack.json");
-const frontendJson = require("./frontend.json");
-const backendJson = require("./backend.json");
+const fullstackJson = require("./output/json/fullstack.json");
+const frontendJson = require("./output/json/frontend.json");
+const backendJson = require("./output/json/backend.json");
 const userinfoJson = require("./input/userinfo.json");
 
 const monthNames = [

@@ -102,11 +102,11 @@ def main(ubc_user, ubc_pw) -> None:
             writeDataToDict(index)
 
         # Write to file
-        with open('fullstack.json', 'w') as outfile: 
+        with open('output/json/fullstack.json', 'w') as outfile: 
             outfile.write(json.dumps(fullStackJson, indent=4))
-        with open('frontend.json', 'w') as outfile: 
+        with open('output/json/frontend.json', 'w') as outfile: 
             outfile.write(json.dumps(frontendJson, indent=4))
-        with open('backend.json', 'w') as outfile: 
+        with open('output/json/backend.json', 'w') as outfile: 
             outfile.write(json.dumps(backendJson, indent=4))
 
     except Exception as e:
