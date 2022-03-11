@@ -120,8 +120,6 @@ def main(ubc_user, ubc_pw) -> None:
 
 # Main Method
 if __name__ == "__main__":
-    userfile = open('input/user.txt')
     username = jdata['ubc_username']
-    u = userfile.readline()
-    pw = userfile.readline()
+    pw = jdata['ubc_password']
     main(username, pw)
