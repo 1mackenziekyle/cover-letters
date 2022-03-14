@@ -4,7 +4,7 @@
 
 ###### [GitHub Repo](github.com/1mackenziekyle/cover-letters)
 
-###### [Demo Video](https://youtu.be/ru7St3sewZM)
+###### [Demo Video](https://www.youtube.com/watch?v=SVqlR_FcmrA)
 
 ###### [Contact Me](https://1mackenziekyle.github.io/personal-website/#/contact)
 
